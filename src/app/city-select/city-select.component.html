@@ -1,0 +1,7 @@
+<form [formGroup]="cityForm">
+  <select formControlName="name">
+    <option *ngFor="let city of (availableCities$ | async)">{{city}}</option>
+  </select>
+  <input type="text" formControlName="units">
+</form>
+<button (click)="save()">+</button>

@@ -1,16 +1,16 @@
-import { Component, TrackByFunction } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { City } from 'src/core/models/city.model';
 
+import { City } from 'src/core/models/city.model';
 import { WeatherState } from 'src/store/weather.reducer';
 
 @Component({
-  selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.scss']
+  selector: 'app-result-list',
+  templateUrl: './result-list.component.html',
+  styleUrls: ['./result-list.component.scss']
 })
-export class AppComponent {
+export class ResultListComponent implements OnInit {
 
   selectedCities$: Observable<City[]>;
 
@@ -19,4 +19,8 @@ export class AppComponent {
   ) {
     this.selectedCities$ = store.select(state => state.weather.selectedCities);
   }
+
+  ngOnInit(): void {
+  }
+
 }
