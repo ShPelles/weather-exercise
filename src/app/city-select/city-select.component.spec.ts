@@ -2,7 +2,7 @@ import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { CitySelectComponent } from './city-select.component';
 
-describe('CitySelectComponent', () => {
+xdescribe('CitySelectComponent', () => {
   let component: CitySelectComponent;
   let fixture: ComponentFixture<CitySelectComponent>;
 
