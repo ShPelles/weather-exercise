@@ -19,4 +19,6 @@ export class AppComponent {
   ) {
     this.selectedCities$ = store.select(state => state.weather.selectedCities);
   }
+
+  trackByIndex: TrackByFunction<City> = index => index;
 }

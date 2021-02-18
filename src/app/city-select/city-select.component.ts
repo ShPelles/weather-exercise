@@ -2,7 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { first } from 'rxjs/operators';
+import { filter } from 'rxjs/operators';
 
 import { WeatherState } from 'src/app/core/store/weather.reducer';
 import { addCity, saveCity } from 'src/app/core/store/weather.actions';
@@ -22,7 +22,7 @@ export class CitySelectComponent implements OnInit {
     this.availableCities$ = store.select(state => state.weather.availableCities);
   }
 
-  @Input() index: number | null = null;
+  @Input() index!: number;
 
   cityForm = new FormGroup({
     name: new FormControl(''),
@@ -30,17 +30,17 @@ export class CitySelectComponent implements OnInit {
   });
 
   ngOnInit(): void {
-    this.store.select(state => state.weather.selectedCities[this.index ?? -1]).pipe(
-      first(),
-    ).subscribe(city => this.cityForm.patchValue(city));
+    const city$ = this.store.select(state => state.weather.selectedCities[this.index ?? -1]);
+    city$.subscribe(city => this.cityForm.patchValue(city, { emitEvent: false }));
+
+    this.cityForm.valueChanges.pipe(
+      filter(city => this.cityForm.valid),
+    ).subscribe(city => {
+      this.store.dispatch(saveCity({ city, index: this.index }));
+    });
   }
 
-  save(): void {
-    // if (this.cityForm.invalid) { throw new Error('Invalid'); } // TODO
-    if (this.index === null) {
-      this.store.dispatch(addCity({ city: this.cityForm.value }));
-    } else {
-      this.store.dispatch(saveCity({ city: this.cityForm.value, index: this.index }));
-    }
+  add(): void {
+    this.store.dispatch(addCity());
   }
 }

@@ -4,5 +4,5 @@
     <option *ngFor="let city of (availableCities$ | async)">{{city}}</option>
   </select>
   <input type="text" class="form-control m-2 wide" formControlName="units" placeholder="units(standard, imperial, etc)">
-  <button class="btn btn-link m-2" (click)="save()">&#10133;</button>
+  <button class="btn btn-link m-2" (click)="add()">&#10133;</button>
 </form>
