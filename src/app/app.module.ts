@@ -5,7 +5,7 @@ import { StoreModule } from '@ngrx/store';
 
 import { AppComponent } from './app.component';
 import { CitySelectComponent } from './city-select/city-select.component';
-import { weatherReducer } from 'src/store/weather.reducer';
+import { weatherReducer } from './core/store/weather.reducer';
 import { ResultListComponent } from './result-list/result-list.component';
 
 @NgModule({

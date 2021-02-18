@@ -1,8 +1,8 @@
 import { createReducer, on } from '@ngrx/store';
 
 import { addCity, saveCity } from './weather.actions';
-import { City } from 'src/core/models/city.model';
-import * as immutable from 'src/core/utils/immutable-array.utils';
+import { City } from '../models/city.model';
+import * as immutable from '../utils/immutable-array.utils';
 
 export interface WeatherState {
   availableCities: string[];

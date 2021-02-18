@@ -1,9 +1,9 @@
 import { Component, TrackByFunction } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
-import { City } from 'src/core/models/city.model';
+import { City } from './core/models/city.model';
 
-import { WeatherState } from 'src/store/weather.reducer';
+import { WeatherState } from './core/store/weather.reducer';
 
 @Component({
   selector: 'app-root',

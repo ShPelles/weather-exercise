@@ -4,8 +4,8 @@ import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 import { first } from 'rxjs/operators';
 
-import { WeatherState } from 'src/store/weather.reducer';
-import { addCity, saveCity } from 'src/store/weather.actions';
+import { WeatherState } from 'src/app/core/store/weather.reducer';
+import { addCity, saveCity } from 'src/app/core/store/weather.actions';
 
 @Component({
   selector: 'app-city-select',

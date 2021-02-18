@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { Observable } from 'rxjs';
 
-import { City } from 'src/core/models/city.model';
-import { WeatherState } from 'src/store/weather.reducer';
+import { City } from 'src/app/core/models/city.model';
+import { WeatherState } from 'src/app/core/store/weather.reducer';
 
 @Component({
   selector: 'app-result-list',
