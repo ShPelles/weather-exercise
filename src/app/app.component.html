@@ -1,5 +1,7 @@
-<h1>Weather Check</h1>
-<app-city-select *ngFor="let city of (selectedCities$ | async); index as i" [index]="i"></app-city-select>
-<app-city-select></app-city-select>
-<app-result-list></app-result-list>
+<h1 class="text-center m-4">Weather Check</h1>
+<div class="text-center m-4">
+  <app-city-select *ngFor="let city of (selectedCities$ | async); index as i" [index]="i"></app-city-select>
+  <app-city-select></app-city-select>
+  <app-result-list></app-result-list>
+</div>
 
