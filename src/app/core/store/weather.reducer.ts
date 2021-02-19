@@ -1,6 +1,6 @@
 import { createReducer, on } from '@ngrx/store';
 
-import { addCity, saveCity, weatherLoadedSuccess } from './weather.actions';
+import { addCity, saveCity, weatherLoadedFailed, weatherLoadedSuccess } from './weather.actions';
 import { City } from '../models/city.model';
 import { Weather } from '../models/weather.model';
 import * as immutable from '../utils/immutable-array.utils';
@@ -16,7 +16,7 @@ const emptyCity: City = { name: '', units: '' };
 
 export const initialState: WeatherState = {
   availableCities: [
-    'Kiev',
+    'Kyiv',
     'Tel Aviv',
     'Jerusalem',
     'Modi\'in',
@@ -35,6 +35,10 @@ export const weatherReducer = createReducer(
   on(addCity, (state) => ({ ...state, selectedCities: immutable.push(state.selectedCities, { ...emptyCity }) })),
   on(weatherLoadedSuccess, (state, { index, weather }) => {
     const apiResult: ApiResult<Weather> = { value: weather, loading: false };
-    return { ...state, weather: immutable.splice(state.weather, index, 0, [apiResult]) };
+    return { ...state, weather: immutable.splice(state.weather, index, 1, [apiResult]) };
+  }),
+  on(weatherLoadedFailed, (state, { index }) => {
+    const apiResult: ApiResult<Weather> = { error: true, loading: false };
+    return { ...state, weather: immutable.splice(state.weather, index, 1, [apiResult]) };
   }),
 );

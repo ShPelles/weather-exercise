@@ -1,0 +1,14 @@
+<h5 *ngIf="(weather$|async)?.loading">Loading...</h5>
+<h5 *ngIf="(weather$|async)?.error">Error</h5>
+<h5 *ngIf="(weather$|async)?.value! as weather">
+  <span class="mx-2">{{weather.name}}</span>
+  <span class="mx-2">{{weather.main.temp}}</span>
+  <span class="mx-2" *ngIf="showDescription">{{weather.weather[0]?.main}}</span>
+  <span class="mx-2" *ngIf="showIcon">
+    <img
+      [src]="'http://openweathermap.org/img/w/'+weather.weather[0]?.icon+'.png'"
+      [alt]="weather.weather[0]?.description"
+      [title]="weather.weather[0]?.description"
+    >
+  </span>
+</h5>

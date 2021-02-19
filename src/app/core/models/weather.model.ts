@@ -2,9 +2,10 @@ export interface Weather {
   name: string;
   main: {
     temp: number;
-    weather: [{
-      main: string;
-      icon: string;
-    }];
   };
+  weather: [{
+    main: string;
+    icon: string;
+    description: string;
+  }];
 }

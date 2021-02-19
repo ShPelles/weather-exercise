@@ -1,6 +1,8 @@
-<h1 class="text-center m-4">Weather Check</h1>
-<div class="text-center m-4">
-  <app-city-select *ngFor="let city of (selectedCities$ | async); index as i; trackBy: trackByIndex" [index]="i"></app-city-select>
+<div class="container">
+  <h1 class="text-center m-4">Weather Check</h1>
+  <div class="text-center my-4">
+    <app-city-select *ngFor="let city of (selectedCities$ | async); index as i; trackBy: trackByIndex" [index]="i"></app-city-select>
+  </div>
   <app-result-list></app-result-list>
 </div>
 

@@ -1,2 +1,6 @@
-<pre>{{selectedCities$ | async | json}}</pre>
-<pre>{{weatherResult$ | async | json}}</pre>
+<h4>Weather in:</h4>
+<ol>
+  <li *ngFor="let city of weatherResult$ | async; index as i; trackBy: trackByIndex">
+    <app-result-item [index]="i" [showDescription]="true"></app-result-item>
+  </li>
+</ol>

@@ -10,12 +10,14 @@ import { CitySelectComponent } from './city-select/city-select.component';
 import { weatherReducer } from './core/store/weather.reducer';
 import { ResultListComponent } from './result-list/result-list.component';
 import { WeatherEffects } from './core/store/weather.effects';
+import { ResultItemComponent } from './result-item/result-item.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CitySelectComponent,
-    ResultListComponent
+    ResultListComponent,
+    ResultItemComponent
   ],
   imports: [
     BrowserModule,
