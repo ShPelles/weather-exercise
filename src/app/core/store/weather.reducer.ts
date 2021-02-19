@@ -31,7 +31,11 @@ export const initialState: WeatherState = {
 
 export const weatherReducer = createReducer(
   initialState,
-  on(saveCity, (state, { index, city }) => ({ ...state, selectedCities: immutable.splice(state.selectedCities, index, 1, [city]) })),
+  on(saveCity, (state, { index, city }) => ({
+    ...state,
+    selectedCities: immutable.splice(state.selectedCities, index, 1, [city]),
+    weather: immutable.splice(state.weather, index, 1, [{ loading: true }]),
+  })),
   on(addCity, (state) => ({ ...state, selectedCities: immutable.push(state.selectedCities, { ...emptyCity }) })),
   on(weatherLoadedSuccess, (state, { index, weather }) => {
     const apiResult: ApiResult<Weather> = { value: weather, loading: false };
